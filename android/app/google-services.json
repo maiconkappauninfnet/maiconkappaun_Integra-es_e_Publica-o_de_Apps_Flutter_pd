@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "317051622533",
+    "project_id": "app-flutter01-maicon",
+    "storage_bucket": "app-flutter01-maicon.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317051622533:android:b5e36b1681e0ce72cd85ec",
+        "android_client_info": {
+          "package_name": "com.devmaicon.flutter_application_2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6n9fgSPYCYffmLHXiqfA3Zvn1OJm6wHg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
