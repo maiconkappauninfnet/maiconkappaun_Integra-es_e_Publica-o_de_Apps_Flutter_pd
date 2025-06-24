@@ -1,8 +1,8 @@
+import 'package:api_acoes_maicon/api_acoes_maicon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/models/acoes.dart';
 import 'package:flutter_application_2/models/compra.dart';
 import 'package:flutter_application_2/services/AcoesService.dart';
-import 'package:flutter_application_2/services/BrapiService.dart';
 
 class CarteiraAnalise {
   final double totalInvestido;
@@ -17,6 +17,9 @@ class CarteiraAnalise {
     required this.rentabilidadePercentual,
   });
 }
+
+final _apiAcoes = ApiAcoesMaicon(token: 'o74HCpk6xjxENWvPcq4XAg');
+
 
 class AcoesProvider with ChangeNotifier {
   final AcoesService _acoesService;
@@ -162,7 +165,7 @@ class AcoesProvider with ChangeNotifier {
   }
 
   Future<double?> getPrecoAtual(String codigo) async {
-    return await BrapiService.buscarPrecoAtual(codigo);
+    return await _apiAcoes.buscarPrecoAtual(codigo);
   }
 
   Future<bool> delete(Acao acao) async {
