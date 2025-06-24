@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/models/acoes.dart';
 import 'package:flutter_application_2/routes.dart';
-import 'package:flutter_application_2/services/BrapiService.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_application_2/providers/acoes_provider.dart';
 
@@ -26,7 +25,8 @@ class AcaoItem extends StatelessWidget {
           final listaAcoes = acoesProvider.acoes ?? [];
 
           for (var acao in listaAcoes) {
-            final novoPreco = await BrapiService.buscarPrecoAtual(acao.codigo);
+            final provider = Provider.of<AcoesProvider>(context, listen: false);
+            final novoPreco = await provider.getPrecoAtual(acao.codigo);
             if (novoPreco != null) {
               final novaAcao = acao.copyWith(precoAtual: novoPreco);
               await acoesProvider.update(novaAcao);

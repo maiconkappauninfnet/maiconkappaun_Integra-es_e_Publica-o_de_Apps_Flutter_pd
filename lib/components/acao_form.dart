@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/models/acoes.dart';
 import 'package:flutter_application_2/providers/acoes_provider.dart';
-import 'package:flutter_application_2/services/BrapiService.dart';
 import 'package:provider/provider.dart';
 
 class AcaoForm extends StatefulWidget {
@@ -55,7 +54,8 @@ class _AcaoFormState extends State<AcaoForm> {
   Future<void> _buscarPrecoAtual() async {
     final codigo = codigoController.text.trim();
     if (codigo.isNotEmpty) {
-      final preco = await BrapiService.buscarPrecoAtual(codigo);
+      final provider = Provider.of<AcoesProvider>(context, listen: false);
+      final preco =  await provider.getPrecoAtual(codigo);
       if (preco != null) {
         setState(() {
           precoAtualController.text = preco.toStringAsFixed(2);
